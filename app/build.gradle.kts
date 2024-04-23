@@ -33,6 +33,12 @@ android {
 
 dependencies {
 
+
+    implementation("android.arch.navigation:navigation-fragment:1.0.0")
+// use -ktx for Kotlin
+    implementation("android.arch.navigation:navigation-ui:1.0.0")
+
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
