@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/nav_graph">
-
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/blankFragment">
+    <!--suppress NavigationFile -->
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.example.navigation.fragment.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" >
+        <action
+            android:id="@+id/action_blankFragment_to_rootFragment"
+            app:destination="@id/rootFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_blankFragment_to_nestedGraphStart"
+            app:destination="@id/navigation" />
+    </fragment>
+    <!--suppress NavigationFile -->
+    <fragment
+        android:id="@+id/rootFragment"
+        android:name="com.example.navigation.fragment.RootFragment"
+        android:label="fragment_root"
+        tools:layout="@layout/fragment_root" >
+        <argument
+            android:name="Cringe"
+            app:argType="string"
+            android:defaultValue="Bruh" />
+    </fragment>
+    <!--suppress NavigationFile -->
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.navigation.fragment.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/nestedGraphStart">
+        <fragment
+            android:id="@+id/nestedGraphStart"
+            android:name="com.example.navigation.fragment.NestedGraphStart"
+            android:label="fragment_nested_graph_start"
+            tools:layout="@layout/fragment_nested_graph_start">
+            <action
+                android:id="@+id/action_nestedGraphStart_to_nestedGraphFinish"
+                app:destination="@id/nestedGraphFinish" />
+        </fragment>
+        <fragment
+            android:id="@+id/nestedGraphFinish"
+            android:name="com.example.navigation.fragment.NestedGraphFinish"
+            android:label="fragment_nested_graph_finish"
+            tools:layout="@layout/fragment_nested_graph_finish" />
+    </navigation>
 </navigation>

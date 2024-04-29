@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+    <item
+        android:id="@id/rootFragment"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/root" />
+    <item
+        android:id="@id/blankFragment"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/blank" />
+    <item
+        android:id="@id/settingFragment"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/setting" />
+
 </menu>

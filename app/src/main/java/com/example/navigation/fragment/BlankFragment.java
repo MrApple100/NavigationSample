@@ -3,10 +3,12 @@ package com.example.navigation.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.navigation.R;
 
@@ -55,12 +57,27 @@ public class BlankFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_blank, container, false);
+
+        Button button = view.findViewById(R.id.button2);
+        Button buttonToNested = view.findViewById(R.id.buttonToNested);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("Cringe","12314");
+                Navigation.findNavController(view).navigate(R.id.action_blankFragment_to_rootFragment,bundle);
+            }
+        });
+        buttonToNested.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_blankFragment_to_nestedGraphStart, null));
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank, container, false);
+        return view;
     }
 }
